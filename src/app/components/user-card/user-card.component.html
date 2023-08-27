@@ -1,4 +1,9 @@
 <div class="card shadow p-4">
   <img class="img-fluid w-25 rounded-circle" src={{pushUser?.image}} alt="Profile image">
   <h3 class="card-title">{{pushUser?.first_name}} {{pushUser?.last_name}}</h3>
+  <div class="row g-2">
+    <a class="btn btn-info col-12 col-md-4" [routerLink]="['/user/', pushUser?._id]">Ver detalle</a>
+    <a class="btn btn-info col-12 col-md-4" [routerLink]="['updateuser/', pushUser?._id]">Actualizar</a>
+    <a class="btn btn-info col-12 col-md-4" [routerLink]="['/home']">Borrar</a>
+  </div>
 </div>

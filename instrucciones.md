@@ -1,6 +1,5 @@
 Rutas:
   /home:
-
   /user/1: 
   /newuser:
   /updateuser/1:

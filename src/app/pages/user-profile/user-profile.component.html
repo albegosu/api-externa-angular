@@ -1,1 +1,18 @@
-<p>user-profile works!</p>
+<section class="container mt-3 row">
+  <img class="rounded-circle w-25 col-5" src={{oneUser?.image}} alt="Profile image">
+  <div class="col-7">
+    <h1>{{ oneUser?.first_name }}</h1>
+    <h3>{{oneUser?.last_name}}</h3>
+    <p>{{oneUser?.username}}</p>
+    <p>{{oneUser?.email}}</p>
+    <div>
+      <a class="btn btn-info col-12 col-md-4" [routerLink]="['/user/', oneUser?._id]">Ver detalle</a>
+      <a class="btn btn-info col-12 col-md-4" [routerLink]="['updateuser/', oneUser?._id]">Actualizar</a>
+      <a class="btn btn-info col-12 col-md-4" [routerLink]="['/home']">Voler a listado</a>
+    </div>
+  </div>
+
+</section>
+<!-- <a class="btn btn-info" [routerLink]="['/home']">Volver a home</a>
+<a class="btn btn-warning" [routerLink]="['/updatepost', onePost?.id]">Actualizar</a>
+<button class="btn btn-danger" (click)="deletePost(onePost?.id)">BORRAR</button> -->

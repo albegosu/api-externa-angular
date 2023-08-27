@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "newuser", component: FormComponent },
   { path: "updateuser/:iduser", component: FormComponent },
-  { path: "userprofile/:iduser", component: UserProfileComponent },
+  { path: "user/:iduser", component: UserProfileComponent },
   { path: "**", component: NotFoundComponent }
 ];
 
