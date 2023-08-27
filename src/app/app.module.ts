@@ -9,6 +9,7 @@ import { FormComponent } from './components/form/form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     FormComponent,
     NavbarComponent,
     FooterComponent,
-    UserCardComponent
+    UserCardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
