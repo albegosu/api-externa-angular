@@ -13,7 +13,8 @@ export class UserService {
   constructor() { }
 
   getAll(): Promise<any[]> {
-    return lastValueFrom(this.httpClient.get<any[]>(this.url))
+    return lastValueFrom(this.httpClient.get<any>(this.url))
+    .then(response => response.results);
   }
 
 }
