@@ -1,0 +1,28 @@
+<form class="form" [formGroup]="userProfile" (ngSubmit)="dataForm()">
+  <div class="mb-3">
+    <label for="first_name">Nombre:</label>
+    <input class="form-control" type="text" formControlName="first_name" id="first_name">
+  </div>
+  <div class="mb-3">
+    <label for="last_name">Apellidos:</label>
+    <input class="form-control" type="text" formControlName="last_name" id="last_name">
+  </div>
+  <div class="mb-3">
+    <label for="username">Apodo:</label>
+    <input class="form-control" type="text" formControlName="username" id="username">
+  </div>
+  <div class="mb-3">
+    <label for="email">Email:</label>
+    <input class="form-control" type="text" formControlName="email" id="email">
+  </div>
+  <div class="mb-3">
+    <label for="password">Contraseña:</label>
+    <input class="form-control" type="password" formControlName="password" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="image">URL de imagen:</label>
+    <input class="form-control" type="text" formControlName="image" id="image">
+  </div>
+
+  <input type="submit" class="btn btn-info" value="Actualizar cambios">
+</form>
