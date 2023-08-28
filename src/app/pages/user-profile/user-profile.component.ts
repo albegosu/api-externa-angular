@@ -21,13 +21,13 @@ export class UserProfileComponent {
     })
   }
 
-  // async deletePost(id: number): Promise<void> {
-  //   alert('¿Estas seguro de borrar este post?')
-  //   let response = await this.userService.delete(id);
-  //   console.log(response);
-  //   if (response) {
-  //     alert('producto borrado correctamente');
-  //     this.router.navigate(['/home'])
-  //   }
-  // }
+  async deleteUser(id: string): Promise<void> {
+    alert('¿Quieres borrar este perfil de usuario?')
+    let response = await this.userService.delete(id);
+    console.log(response);
+    if (response) {
+      alert('El usuario ha sido borrado correctamente');
+      this.router.navigate(['/home'])
+    }
+  }
 }

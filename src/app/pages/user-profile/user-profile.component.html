@@ -6,7 +6,7 @@
     <p>{{oneUser?.username}}</p>
     <p>{{oneUser?.email}}</p>
     <div>
-      <a class="btn btn-info col-12 col-md-4" [routerLink]="['/user/', oneUser?._id]">Ver detalle</a>
+      <a class="btn btn-info col-12 col-md-4" (click)="deleteUser(oneUser?._id)">Eliminar</a>
       <a class="btn btn-info col-12 col-md-4" [routerLink]="['updateuser/', oneUser?._id]">Actualizar</a>
       <a class="btn btn-info col-12 col-md-4" [routerLink]="['/home']">Voler a listado</a>
     </div>

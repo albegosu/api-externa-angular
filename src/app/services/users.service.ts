@@ -18,13 +18,19 @@ export class UserService {
     .then(response => response.results);
   }
 
-  getById(id: string): Promise<any> {
+  getById(id: string): Promise<User> {
     return lastValueFrom(this.httpClient.get<User>(`${this.url}/${id}`))
   }
 
-  delete(id: number): Promise<any> {
-    return lastValueFrom(this.httpClient.delete<any>(`${this.url}/${id}`))
-    .then(response => response.results);
+  delete(id: string): Promise<User> {
+    return lastValueFrom(this.httpClient.delete<User>(`${this.url}/${id}`))
   }
 
+  create(formData: any): Promise<User> {
+    return lastValueFrom(this.httpClient.post<User>(this.url, formData))
+  }
+
+  update(formData: User): Promise<User> {
+    return lastValueFrom(this.httpClient.put<User>(`${this.url}/${formData.id}`, formData))
+  }
 }
