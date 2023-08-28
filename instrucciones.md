@@ -28,3 +28,11 @@ Servicio:
   PUT https://peticiones.online/api/users/IDUSUARIO
   DELETE https://peticiones.online/api/users/IDUSUARIO
 
+
+
+PENDIENTE:
+
+VALIDACIONES FORMULARIO
+README
+ESTILOS FINALES
+

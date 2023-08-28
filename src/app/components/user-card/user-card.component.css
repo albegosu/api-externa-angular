@@ -1,0 +1,10 @@
+.btnText{
+  font-size: 0.7rem;
+}
+.link{
+  transition: 0.3s;
+}
+.link:hover{
+  color: orange;
+  transform: scale(1.25);
+}

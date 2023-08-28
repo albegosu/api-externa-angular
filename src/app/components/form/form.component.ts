@@ -32,7 +32,6 @@ export class FormComponent {
 
       if (id) {
         let response = await this.userService.getById(id)
-        console.log(response);
 
         this.userProfile = new FormGroup({
           _id: new FormControl(response._id, []),

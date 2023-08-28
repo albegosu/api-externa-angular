@@ -1,9 +1,18 @@
-<div class="card shadow p-4">
-  <img class="img-fluid w-25 rounded-circle" src={{pushUser?.image}} alt="Profile image">
-  <h3 class="card-title">{{pushUser?.first_name}} {{pushUser?.last_name}}</h3>
-  <div class="row g-2">
-    <a class="btn btn-info col-12 col-md-4" [routerLink]="['/user/', pushUser?._id]">Ver detalle</a>
-    <a class="btn btn-info col-12 col-md-4" [routerLink]="['/updateuser/', pushUser?._id]">Actualizar</a>
-    <a class="btn btn-info col-12 col-md-4" (click)="deleteUser(pushUser._id)">Borrar</a>
+<div class="container card shadow p-4 d-flex flex-column justify-content-center align-items-center">
+  <img class="img-fluid w-50 rounded-circle" src={{pushUser?.image}} alt="Profile image">
+  <h3 class="card-title fs-6 pt-3">{{pushUser?.first_name}} {{pushUser?.last_name}}</h3>
+  <div class="container row g-2 mt-2">
+    <a class="btn btn-ligth col-4 p-0 link" [routerLink]="['/user/', pushUser?._id]">
+      <i class="bi bi-search"></i>
+      <p class="text-center btnText">Ver detalle</p>
+    </a>
+    <a class="btn btn-ligth col-4 p-0 link" [routerLink]="['/updateuser/', pushUser?._id]">
+      <i class="bi bi-arrow-clockwise"></i>
+      <p class="btnText">Actualizar</p>
+    </a>
+    <a class="btn btn-ligth col-4 p-0 link" (click)="deleteUser(pushUser._id)">
+      <i class="bi bi-trash"></i>
+      <p class="btnText">Borrar</p>
+    </a>
   </div>
 </div>
