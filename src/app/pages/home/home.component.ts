@@ -14,7 +14,7 @@ export class HomeComponent {
   async ngOnInit(): Promise<void> {
     try {
       this.allUsers = await this.userService.getAll();
-      // console.log(this.allUsers)
+      console.log(this.allUsers)
     } catch (error) {
       console.log(error)
     }

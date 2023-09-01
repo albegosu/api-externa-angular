@@ -22,6 +22,7 @@ export class UserProfileComponent {
   }
 
   async deleteUser(id: string): Promise<void> {
+    //UTILIZAR SWEETALERT!!!!!!!!!
     alert('¿Quieres borrar este perfil de usuario?')
     let response = await this.userService.delete(id);
     console.log(response);
