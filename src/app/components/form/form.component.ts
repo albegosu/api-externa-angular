@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/users.service';
@@ -10,20 +10,22 @@ import { UserService } from 'src/app/services/users.service';
 })
 export class FormComponent {
 
-  userProfile: FormGroup
+  userProfile: FormGroup;
   activatedRoute = inject(ActivatedRoute);
-  userService = inject(UserService)
-  router = inject(Router)
+  userService = inject(UserService);
+  router = inject(Router);
 
   constructor(){
     this.userProfile = new FormGroup({
       first_name: new FormControl('', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
+        Validators.minLength(3),
       ]),
       last_name: new FormControl('', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
+        Validators.minLength(3),
       ]),
       username: new FormControl('', [
         Validators.required,
@@ -56,11 +58,13 @@ export class FormComponent {
           _id: new FormControl(response._id, []),
           first_name: new FormControl(response.first_name, [
             Validators.required,
-            Validators.minLength(3)
+            Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
+            Validators.minLength(3),
           ]),
           last_name: new FormControl(response.last_name, [
             Validators.required,
-            Validators.minLength(3)
+            Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
+            Validators.minLength(3),
           ]),
           username: new FormControl(response.username, [
             Validators.required,
@@ -71,7 +75,9 @@ export class FormComponent {
             Validators.pattern(/^.+@[^\.].*\.[a-z]{2,}$/)
           ]),
           password: new FormControl(response.password, [
-            Validators.required
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(20)
           ]),
           image: new FormControl(response.image, [
             Validators.required
