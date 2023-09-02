@@ -32,6 +32,6 @@ export class UserService {
   }
 
   update(formData: User): Promise<User> {
-    return lastValueFrom(this.httpClient.put<User>(`${this.url}/${formData.id}`, formData))
+    return lastValueFrom(this.httpClient.put<User>(`${this.url}/${formData._id}`, formData))
   }
 }

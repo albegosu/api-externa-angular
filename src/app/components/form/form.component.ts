@@ -90,10 +90,11 @@ export class FormComponent {
   async dataForm(): Promise<void> {
     if (this.userProfile.value._id) {
       let response = await this.userService.update(this.userProfile.value)
+      console.log(response);
       if (response) {
         alert('Usuario actualizado correctamente')
         this.router.navigate(['/home']);
-        console.log(this.userProfile.value);
+
       } else {
         alert('Error al actualizar el perfil del usuario');
       }
