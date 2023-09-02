@@ -3,3 +3,8 @@
     <app-user-card [pushUser]="user"></app-user-card>
   </article>
 </section>
+
+<div class="text-center">
+  <button (click)="changePage(1)" [class.active]="currentPage === 1" class="btn">1</button>
+  <button (click)="changePage(2)" [class.active]="currentPage === 2" class="btn">2</button>
+</div>
