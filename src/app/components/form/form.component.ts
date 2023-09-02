@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -92,20 +93,47 @@ export class FormComponent {
       let response = await this.userService.update(this.userProfile.value)
       console.log(response);
       if (response) {
-        alert('Usuario actualizado correctamente')
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Usuario actualizado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        // alert('Usuario actualizado correctamente')
         this.router.navigate(['/home']);
-
       } else {
-        alert('Error al actualizar el perfil del usuario');
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Error al actualizar el perfil del usuario',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        // alert('Error al actualizar el perfil del usuario');
       }
     } else {
       let response = await this.userService.create(this.userProfile.value);
       if (response.id) {
-        alert('Usuario creado correctamente')
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Usuario creado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        // alert('Usuario creado correctamente')
         this.router.navigate(['/home']);
         console.log(response)
       } else {
-        alert('Ha habido un error, intentalo de nuevo')
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ha habido un error, intentalo de nuevo',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        // alert('Ha habido un error, intentalo de nuevo')
       }
     }
   }
