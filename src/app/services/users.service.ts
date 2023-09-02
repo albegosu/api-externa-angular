@@ -6,6 +6,7 @@ import { User } from '../interfaces/user.interface';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   httpClient = inject(HttpClient)
@@ -13,9 +14,9 @@ export class UserService {
 
   constructor() { }
 
-  getAll(): Promise<any[]> {
-    return lastValueFrom(this.httpClient.get<any>(this.url))
-    .then(response => response.results);
+  getAll(page: number = 2): Promise<any[]> {
+    return lastValueFrom(this.httpClient.get<any>(`${this.url}?page=${page}`))
+      .then(response => response.results);
   }
 
   getById(id: string): Promise<User> {
@@ -31,6 +32,6 @@ export class UserService {
   }
 
   update(formData: User): Promise<User> {
-    return lastValueFrom(this.httpClient.put<User>(`${this.url}/${formData.id}`, formData))
+    return lastValueFrom(this.httpClient.put<User>(`${this.url}/${formData._id}`, formData))
   }
 }
