@@ -1,3 +1,4 @@
+<!-- FORM REACTIVE -> FORMGRUPO // NGSUBMIT -->
 <form [formGroup]="userProfile" (ngSubmit)="dataForm()">
   <div class="mb-3">
     <label for="first_name">Nombre:</label>
@@ -12,8 +13,7 @@
     <input class="form-control" type="text" formControlName="last_name" id="last_name">
     <!-- VALIDACIÓN -->
     <p class="error" *ngIf="checkControl('last_name', 'required')">Campo es requerido</p>
-    <p class="error" *ngIf="checkControl('last_name', 'minlength')">La longitud minima es de 3 caracteres</p>
-    <p class="error" *ngIf="checkControl('last_name', 'pattern')">No admite caracteres especiales</p>
+    <p class="error" *ngIf="checkControl('last_name', 'pattern')">Es necesario incluir los dos apellidos</p>
   </div>
   <div class="mb-3">
     <label for="username">Usuario:</label>

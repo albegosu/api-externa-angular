@@ -18,30 +18,35 @@ export class FormComponent {
 
   constructor(){
     this.userProfile = new FormGroup({
-      first_name: new FormControl('', [
+      first_name: new FormControl('',
+      [
         Validators.required,
         Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
         Validators.minLength(3),
       ]),
-      last_name: new FormControl('', [
+      last_name: new FormControl('',
+      [
         Validators.required,
-        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
-        Validators.minLength(3),
+        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/)
       ]),
-      username: new FormControl('', [
+      username: new FormControl('',
+      [
         Validators.required,
         Validators.minLength(3)
       ]),
-      email: new FormControl('', [
+      email: new FormControl('',
+      [
         Validators.required,
         Validators.pattern(/^.+@[^\.].*\.[a-z]{2,}$/)
       ]),
-      password: new FormControl('', [
+      password: new FormControl('',
+      [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(20)
       ]),
-      image: new FormControl('', [
+      image: new FormControl('',
+      [
         Validators.required
       ])
     }, []);
@@ -50,37 +55,44 @@ export class FormComponent {
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe(async (params: any) => {
+      // OBTENEMOS IDUSER DE LA URL
       let id: string = String(params.iduser);
-
+      // SI HAY UN ID EN LA URL, RELLENAR EL FORM CON LOS DATOS
       if (id) {
         let response = await this.userService.getById(id)
 
         this.userProfile = new FormGroup({
           _id: new FormControl(response._id, []),
-          first_name: new FormControl(response.first_name, [
+          first_name: new FormControl(response.first_name,
+          [
             Validators.required,
             Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
             Validators.minLength(3),
           ]),
-          last_name: new FormControl(response.last_name, [
+          last_name: new FormControl(response.last_name,
+          [
             Validators.required,
             Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
             Validators.minLength(3),
           ]),
-          username: new FormControl(response.username, [
+          username: new FormControl(response.username,
+          [
             Validators.required,
             Validators.minLength(3)
           ]),
-          email: new FormControl(response.email, [
+          email: new FormControl(response.email,
+          [
             Validators.required,
             Validators.pattern(/^.+@[^\.].*\.[a-z]{2,}$/)
           ]),
-          password: new FormControl(response.password, [
+          password: new FormControl(response.password,
+          [
             Validators.required,
             Validators.minLength(6),
             Validators.maxLength(20)
           ]),
-          image: new FormControl(response.image, [
+          image: new FormControl(response.image,
+          [
             Validators.required
           ])
         }, []);
@@ -89,6 +101,7 @@ export class FormComponent {
   }
 
   async dataForm(): Promise<void> {
+    // SI HAY UN ID, LLAMAMOS AL MÉTODO UPDATE Y LE PASAMOS LOS DATOS DEL FORM
     if (this.userProfile.value._id) {
       let response = await this.userService.update(this.userProfile.value)
       console.log(response);
@@ -100,7 +113,6 @@ export class FormComponent {
           showConfirmButton: false,
           timer: 1500
         })
-        // alert('Usuario actualizado correctamente')
         this.router.navigate(['/home']);
       } else {
         Swal.fire({
@@ -110,10 +122,11 @@ export class FormComponent {
           showConfirmButton: false,
           timer: 1500
         })
-        // alert('Error al actualizar el perfil del usuario');
       }
     } else {
+      // SI NO HAY ID, LLAMAMOS AL MÉTODO CREATE Y ENVIAMOS LOS DATOS DEL NUEVO USUARIO
       let response = await this.userService.create(this.userProfile.value);
+      console.log(response)
       if (response.id) {
         Swal.fire({
           position: 'center',
@@ -122,9 +135,7 @@ export class FormComponent {
           showConfirmButton: false,
           timer: 1500
         })
-        // alert('Usuario creado correctamente')
         this.router.navigate(['/home']);
-        console.log(response)
       } else {
         Swal.fire({
           position: 'center',
@@ -133,7 +144,6 @@ export class FormComponent {
           showConfirmButton: false,
           timer: 1500
         })
-        // alert('Ha habido un error, intentalo de nuevo')
       }
     }
   }

@@ -21,16 +21,17 @@ export class HomeComponent {
     }
   }
 
-  async changePage(pageNumber: number) {
-    this.currentPage = pageNumber;
-    await this.loadPage(pageNumber);
-  }
-
   async loadPage(pageNumber: number) {
     try {
       this.allUsers = await this.userService.getAll(pageNumber);
+      console.log(this.allUsers);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async changePage(pageNumber: number) {
+    this.currentPage = pageNumber;
+    await this.loadPage(pageNumber);
   }
 }
