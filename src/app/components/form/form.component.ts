@@ -27,8 +27,7 @@ export class FormComponent {
       last_name: new FormControl('',
       [
         Validators.required,
-        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/),
-        Validators.minLength(3),
+        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+$/)
       ]),
       username: new FormControl('',
       [
