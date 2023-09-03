@@ -16,6 +16,7 @@ export class UserService {
 
   getAll(page: number = 2): Promise<any[]> {
     return lastValueFrom(this.httpClient.get<any>(`${this.url}?page=${page}`))
+      // ENTRAMOS EN LA PROPIEDAD RESULTS PARA ACCEDER A LOS USUARIOS
       .then(response => response.results);
   }
 
