@@ -55,9 +55,7 @@ export class FormComponent {
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe(async (params: any) => {
-      // OBTENEMOS IDUSER DE LA URL
       let id: string = String(params.iduser);
-      // SI HAY UN ID EN LA URL, RELLENAR EL FORM CON LOS DATOS
       if (id) {
         let response = await this.userService.getById(id)
 
@@ -101,7 +99,6 @@ export class FormComponent {
   }
 
   async dataForm(): Promise<void> {
-    // SI HAY UN ID, LLAMAMOS AL MÉTODO UPDATE Y LE PASAMOS LOS DATOS DEL FORM
     if (this.userProfile.value._id) {
       let response = await this.userService.update(this.userProfile.value)
       console.log(response);
@@ -124,7 +121,6 @@ export class FormComponent {
         })
       }
     } else {
-      // SI NO HAY ID, LLAMAMOS AL MÉTODO CREATE Y ENVIAMOS LOS DATOS DEL NUEVO USUARIO
       let response = await this.userService.create(this.userProfile.value);
       console.log(response)
       if (response.id) {

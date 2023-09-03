@@ -24,7 +24,6 @@ export class HomeComponent {
   async loadPage(pageNumber: number) {
     try {
       this.allUsers = await this.userService.getAll(pageNumber);
-      console.log(this.allUsers);
     } catch (error) {
       console.log(error);
     }

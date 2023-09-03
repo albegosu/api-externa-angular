@@ -13,7 +13,6 @@ export class UserCardComponent {
   userService = inject(UserService);
   router = inject(Router);
 
-  // USAMOS ! PARA INDICAR QUE NO SE DEVOLVERÁ VALOR NULO O INDEFINIDO
   @Input() pushUser!: User | any;
 
   async deleteUser(id: string): Promise<void> {
