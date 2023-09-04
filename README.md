@@ -1,3 +1,50 @@
+# Api-Externa Angular
+
+-> Consultamos la API peticiones.online y creamos la página entorno al contenido
+
+-> Pages:
+    home (todos los usuarios que devuelve la api)
+    user-profile (detalle de usuario)
+    not-found (página para paths no existentes)
+
+-> Components:
+    navbar/footer (utilizados en todas las páginas)
+    form (tanto para crear como para actualizar usuarios)
+    user-card (componente para el renderizado en vista home de cada usuario)
+
+-> Interface:
+    User:
+      _id;
+      id;
+      first_name;
+      last_name;
+      username;
+      email;
+      image;
+      password;
+
+-> Services:
+    getAll, getById, delete, create, update (CRUD completo)
+
+
+-> Desarrollo:
+
+  La API externa devuelve 15 resultados, 10 por página en 2 páginas. Creamos una paginación para mostrar en Home todo los resultados.
+
+  Desde la vista principal podemos Ver detalle, Actualizar, Borrar un usuario. Y en la Navbar y Footer, tenemos la opción de crear un Nuevo Usuario.
+
+  El Form de actualización y creación de un usuario, contiene validaciones:
+    first_name: de la A a la Z, mayusc/minus, y tildes
+    last_name: misma que para first_name, esperando un espacio y cadena posterior (dos apellidos)
+    email: espera texto + @ + texto + . + al menos dos caracteres más
+    password: espera mínimo 6 y máximo 20 caracteres, con un contador visible 0/20 para el usuario
+
+    Este componente es reutilizado, si en la URL tenemos un _id, autocompletamente con su información los inputs y si no, se abre vacío.
+
+    Usamos SweetAlert para dar estilos a las alertas de actualización, creado, eliminado y errores.
+
+  Mantenemos los Console Log de respuesta de la API en los métodos del CRUD para confirmar respuesta correcta.
+
 # ApiExternaAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
